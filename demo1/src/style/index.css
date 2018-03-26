@@ -1,0 +1,7 @@
+/* index.css */
+body {
+    background: url('../assets/img/bg.jpg');
+}
+div {
+    background: url('../assets/img/header.jpg') no-repeat;
+}
