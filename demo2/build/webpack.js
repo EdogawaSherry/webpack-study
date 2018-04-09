@@ -1,18 +1,27 @@
 // 路径解析
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const rm = require('rimraf');
+const utils = require('./utils');
+const config = require('./config');
 
-// 删除
-rm(path.join(__dirname, '../dist'), (err) => {
-    if (err) throw err;
+// entry对象
+const Entries = {};
+// 插件数组
+const HtmlPlugins = [];
+
+config.pageNames.forEach((page) => {
+    const htmlPlugin = new HtmlWebpackPlugin({
+        filename: `${page}.html`,
+        template: path.join(__dirname, `../src/page/${page}.html`),
+        chunks: [page]
+    });
+    HtmlPlugins.push(htmlPlugin);
+    Entries[page] = path.join(__dirname, `../src/script/${page}.js`);
 });
-
 module.exports = {
     // js文件入口
-    entry: path.join(__dirname, '../src/script/main.js'),
+    entry: Entries,
     // 输出到dist目录
     output: {
         path: path.join(__dirname, '../dist'),
@@ -38,19 +47,6 @@ module.exports = {
                 }
             },
             {
-                // 对css文件使用loader
-                test: /\.css$/,
-                // 使用插件提取样式
-                use: ExtractTextPlugin.extract({
-                    // 样式loader运行顺序，后续可加入less/sass等处理
-                    use: ['css-loader', 'autoprefixer-loader'],
-                    // 若上述处理进行顺利，执行style-loader并导出文件
-                    fallback: 'style-loader',
-                    // 样式覆盖路径 处理背景图之类
-                    publicPath: '../../'
-                })
-            },
-            {
                 // 对下列资源文件使用loader
                 test: /\.(gif|jpg|png|woff|svg|eot|ttf)\??.*$/,
                 loader: 'url-loader',
@@ -58,7 +54,7 @@ module.exports = {
                     // 小于10kb将会转换成base64
                     limit: 10240,
                     // 大于10kb的资源输出地[name]是名字[ext]后缀
-                    name: 'static/img/[name].[hash:8].[ext]'
+                    name: utils.assetsPath('img/[name].[hash:6].[ext]')
                 }
             },
             {
@@ -66,19 +62,13 @@ module.exports = {
                 loader: 'url-loader',
                 options: {
                     limit: 10240,
-                    name: 'static/media/[name].[hash:8].[ext]'
+                    name: utils.assetsPath('media/[name].[hash:6].[ext]')
                 }
             }
         ]
     },
     plugins: [
-        new ExtractTextPlugin('static/css/[name].[hash].css'),
-        new HtmlWebpackPlugin({
-            // 生成的html文件名，该文件将被放置在输出目录
-            filename: 'index.html',
-            // 源html文件路径
-            template: path.join(__dirname, '../src/page/index.html')
-        }),
+        ...HtmlPlugins,
         new CopyWebpackPlugin([{
             // 源文件目录
             from: path.join(__dirname, '../static'),

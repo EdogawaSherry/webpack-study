@@ -1,7 +1,14 @@
 /* main.js */
 import '../style/index.css';
+import '../style/less.less';
+import '../style/scss.scss';
+import '../style/sass.sass';
 
-console.log('webpack第一步');
+import { sayName } from './module/name';
+
+sayName();
+
+console.log('webpack第二步');
 
 const sayHello = () => {
     console.log('hello');
