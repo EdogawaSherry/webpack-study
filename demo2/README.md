@@ -13,4 +13,4 @@
 * 多页面开发原理和配置介绍
 
 #### blog
-[webpack学习笔记(二)环境分离+多页面开发配置)](https://blog.csdn.net/yeluochen4869/article/details/79867216)
+[webpack学习笔记(二)环境分离+多页面开发配置](https://blog.csdn.net/yeluochen4869/article/details/79867216)
