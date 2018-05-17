@@ -18,10 +18,10 @@ module.exports = {
         path: path.join(__dirname, '../dist'),
         filename: 'static/js/[name].[hash].js'
     },
-    devServer: {
-        host: '192.168.0.101',
-        port: '2018'
-    },
+    // devServer: {
+    //     host: '192.168.0.101',
+    //     port: '2018'
+    // },
     module: {
         loaders: [
             {

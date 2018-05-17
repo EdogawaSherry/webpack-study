@@ -1,6 +1,10 @@
 /* main.js */
 import '../style/index.css';
 
+import htmlBg1 from '../assets/img/html-1.jpg';
+
+console.log(htmlBg1);
+
 console.log('webpack第一步');
 
 const sayHello = () => {
