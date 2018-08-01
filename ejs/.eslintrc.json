@@ -1,0 +1,36 @@
+// {
+// 	"env": {
+//         "jquery": true,
+// 		"node": true,
+// 		"browser": true,
+// 		"es6": true
+//     },
+// 	"extends": "airbnb",
+// 	"plugins": [
+// 		"react",
+// 		"html"
+// 	],
+// 	"rules": {
+//         "indent": ["error", 4, {"SwitchCase": 1}],
+// 		"comma-dangle": ["error", "never"],
+// 		"for-direction": ["off"],
+// 		"func-names": ["warn"],
+// 		"no-restricted-syntax": ["off"],
+// 		"prefer-destructuring": [
+// 			"error",
+// 			{
+// 				"VariableDeclarator": {
+// 					"array": false,
+// 		        	"object": false
+// 				},
+// 				"AssignmentExpression": {
+// 					"array": false,
+// 					"object": false
+// 				}
+// 		    },
+// 			{
+// 		      "enforceForRenamedProperties": false
+// 		    }
+// 		]
+//     }
+// }

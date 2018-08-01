@@ -1,0 +1,12 @@
+body {
+  width: 100%;
+}
+.box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 300px;
+}
+.box a {
+  color: #000;
+}
