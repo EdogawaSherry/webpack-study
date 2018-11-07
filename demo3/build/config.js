@@ -1,3 +1,4 @@
+
 module.exports = {
     // 多页面配置
     pageNames: [
@@ -10,7 +11,7 @@ module.exports = {
         sourceMap: true,
         extract: false,
         // 局域网IP
-        host: '192.168.11.105',
+        host: 'localhost',
         // 端口号
         port: '2018'
     },

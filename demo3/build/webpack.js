@@ -1,5 +1,6 @@
 // 路径解析
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const utils = require('./utils');
@@ -91,6 +92,10 @@ module.exports = {
     },
     plugins: [
         ...HtmlPlugins,
+        new webpack.ProvidePlugin({
+            jQuery: 'jquery',
+            $: 'jquery'
+        }),
         new CopyWebpackPlugin([{
             // 源文件目录
             from: path.join(__dirname, '../static'),

@@ -5,7 +5,6 @@ import '../style/sass.sass';
 import HeaderTpl from '../tpl/header/tpl';
 
 const header = new HeaderTpl();
-const $ = require('jquery');
 
 $('body').prepend(header.tpl);
 
